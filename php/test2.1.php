@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<form  >
+<form action = "/test2.1.php" method = "get">
     первое число: <input type = "number" name = "num1">
     <br>
     второе число: <input type = "number" name = "num2">
@@ -14,6 +14,7 @@
     <button type = "submit" name = "but" value = "minus">"-"</button>
     <button type = "submit" name = "but" value = "mul">"*"</button>
     <button type = "submit" name = "but" value = "div">"/"</button>
+    <br>
     <?
     $num1 = $_GET["num1"];
     $num2 = $_GET["num2"];
