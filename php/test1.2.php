@@ -13,3 +13,5 @@ $ds = dis($a,$b,$c);
 echo "Дискриминант" ."&nbsp;" . $ds . "<br>";
 echo "Первый корень" . "&nbsp;" . (kr1($ds, $a,$b)) . "<br>";
 echo "Второй корень" . "&nbsp;" . (kr2($ds, $a,$b));
+assert(76 == dis(3,4,-5) );
+assert(81 == dis(2,5,-7) );
