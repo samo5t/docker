@@ -1,4 +1,4 @@
-trofim.ru:80 {
+homework.local:80 {
 	root * /var/www/
 
 	log
