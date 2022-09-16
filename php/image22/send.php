@@ -2,14 +2,9 @@
 <html lang="ru">
 <head>
     <title>calc</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/image22/style.css">
 </head>
 <body>
-<style>
-img {
-    vertical-align: middle;
-    }
-</style>
 <?php
 
 $img = ["<img src='https://ichef.bbci.co.uk/news/640/cpsprodpb/475B/production/_98776281_gettyimages-521697453.jpg'  width='800' height='610' >",
