@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <title>calc</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <form action = "/test2.1.php" method = "get">
@@ -15,7 +15,7 @@
     <button type = "submit" name = "but" value = "mul">"*"</button>
     <button type = "submit" name = "but" value = "div">"/"</button>
     <br>
-    <?
+    <?php
     $num1 = $_GET["num1"];
     $num2 = $_GET["num2"];
     $res = 0;
