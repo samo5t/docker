@@ -8,13 +8,16 @@
     <title>Document</title>
 </head>
 <body>
-<form action="/test31/redirect3.1.php" method="post">
-    Имя: <input type="text" name="newNameInList">
+<form action="/test32/upload.php" method="post" enctype="multipart/form-data">
+<input type="file" name="picture">
+    <button type="submit">Отправить</button>
+<?php
+$path = __DIR__ . "/dice.png";
+$img = "<img src='{$path}'  width='800' height='610' >";
+echo $img
 
-    Время: <input type="time" name="arrivalTime"><br>
-    <button type="submit" name="send" value="send">Добавить</button>
-    <br>
 
+?>
 </form>
 </body>
 </html>

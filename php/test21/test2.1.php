@@ -57,13 +57,15 @@
 
 
     $res = 0;
+    echo set_error_handler('exceptions_error_handler');
     if (!preg_match($pattern, $firstNumber) && !preg_match($pattern, $secondNumber)) {
         echo "Введите числа";
-        die;
     } else {
         echo "результат ";
         echo selectOperation($_GET["operation"], $firstNumber, $secondNumber);
     };
+
+
     ?>
 </form>
 </body>
