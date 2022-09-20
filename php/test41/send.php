@@ -1,18 +1,6 @@
-<?php
-session_start();
-include __DIR__ . "/../include/includeFunction.php";
-include __DIR__ . "/extraFunction.php";
 
-if(authenticate($_POST['username'], $_POST['password'])) {
-    echo 'успешно';
-    $_SESSION['username'] = $_POST['username'];
-    $_SESSION['password'] = $_POST['password'];
-} else {
-    $_POST['incorrectInput'] = 1;
-    echo 'неуспешно';
-}
+
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,12 +11,20 @@ if(authenticate($_POST['username'], $_POST['password'])) {
     <title>Document</title>
 </head>
 <body>
-<form action="/test41/login.php" method="post">
+<form action="/test41/mainpage.php" method="post">
     Login: <input type="text" name="username">
     Pass: <input type="password" name="password"><br>
     <button type="submit" name="send" value="send">Добавить</button>
     <br>
+    <?php
+    include __DIR__ . "/extraFunction.php";
+    var_dump($_POST);
+    if ($_POST['register'] == 'register') {
+        $_POST['username'] = 'username';
+        $_POST['password'] = 'password';
+    }
 
+    ?>
 
 </form>
 </body>
