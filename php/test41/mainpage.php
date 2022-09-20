@@ -9,17 +9,36 @@
 </head>
 <body>
 <form action="/test41/redirect.php" method="post">
-
     <button type="submit" name="register" value="register">Регистрация</button>
     <button type="submit" name="login" value="login">Войти</button>
     <br>
     <?php
-
-    $username = $_POST['username'];
-    $password = $_POST['password'];
     $path = __DIR__ . "/data.txt";
+    include __DIR__ . "/../include/includeFunction.php";
     include __DIR__ . "/extraFunction.php";
-var_dump($_POST);
+    if (isset($_POST['register_username']) && isset($_POST['register_password'])) {
+        $entry = "{$_POST["register_username"]},{$_POST["register_password"]} \n";
+        $checkName = $_POST["register_username"];
+        if (checkLabel($checkName, 4) && (authenticate($_POST['register_username'], $_POST['register_password']))) {
+            file_put_contents($path, $entry, FILE_APPEND | LOCK_EX);
+            $sprav = getUsersList($path);
+            foreach ($sprav as $value) {
+                echo "{$value} <br>";
+            }
+        } else {
+            echo "Неверные значения или уже зарегистрированы";
+        }
+    };
+    if (isset($_POST['username']) && isset($_POST['password'])) {
+        if (authenticate($_POST['username'], $_POST['password'])) {
+            echo 'успешно';
+            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['password'] = $_POST['password'];}
+        else{
+                echo 'Неверный логин или пароль';
+            }
+        }
+
 
     ?>
 

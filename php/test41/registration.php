@@ -1,3 +1,7 @@
+
+<?php
+$_POST['register'] = 1;
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,23 +12,11 @@
     <title>Document</title>
 </head>
 <body>
-<?php
+<form action="/test41/mainpage.php" method="post">
+    Login: <input type="text" name="register_username">
+    Pass: <input type="password" name="register_password"><br>
+<br>
 
-    include __DIR__ . "/extraFunction.php";
-    $path = __DIR__ . "/data.txt";
-    $entry = "{$_POST["username"]} {$_POST["password"]} \n";
-    $checkName = $_POST["username"];
-
-    if (checkLabel($checkName)) {
-        file_put_contents($path, $entry, FILE_APPEND | LOCK_EX);
-        $sprav = getUsersList($path);
-        foreach ($sprav as $value) {
-            echo "{$value} <br>";
-        }
-    } else {
-        echo "Неверное значение";
-    }
-    var_dump($_POST);
-?>
+    <button type="submit" name="send" value="send">Registration</button>
 </body>
 </html>

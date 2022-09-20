@@ -4,7 +4,8 @@ function getUsersList($dir): bool|array
 {
         return file($dir);
 }
-function authenticate($username, $password){
+function authenticate(string $username, string $password): bool
+{
     $file = explode( PHP_EOL, file_get_contents( __DIR__ . "/data.txt" ));
     foreach( $file as $line ) {
         list($username, $password) = explode(",", $line);

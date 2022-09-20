@@ -8,6 +8,9 @@
     <title>Document</title>
 </head>
 <body>
+<?php
+$_POST['incorrectInput'] = 0;
+?>
 Неверные данные!!!
 </body>
 </html>
