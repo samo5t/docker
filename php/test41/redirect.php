@@ -9,6 +9,8 @@ if (isset($_POST['login'])) {
 if (isset($_POST['incorrectInput'])) {
     $x = "Location: http://homework.local/test41/incorrect.php";
 }
-
+if (isset($_POST['download'])) {
+    $x = "Location: http://homework.local/test41/send.php";
+}
 header($x);
-?>
+

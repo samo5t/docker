@@ -12,7 +12,8 @@
 <input type="file" name="picture">
     <button type="submit">Отправить</button>
 <?php
-$path = __DIR__ . "/dice.png";
+$path = "/bmw";
+var_dump($path);
 $img = "<img src='{$path}'  width='800' height='610' >";
 echo $img
 

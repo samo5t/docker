@@ -1,14 +1,15 @@
 <?php
+const FORMAT_NAME = 1;
 
 function checkLabel(string $text, int $format): int
 {
-    $x = 0;
+
     $patternForRuLettersOnly = "/^[а-яё]+$/iu";
     $patternForEnLettersOnly = "/^[a-z]+$/iu";
     $patternForInteger = '/^\d+$/';
     $patternForFloat = '/^[0-9]*[.,][0-9]+$/';
     switch (true) {
-        case preg_match($patternForRuLettersOnly, $text) && $format == 1:
+        case preg_match($patternForRuLettersOnly, $text) && $format == FORMAT_NAME:
             $x = 1;
             break;
         case preg_match($patternForInteger, $text) && $format == 2:

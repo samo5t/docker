@@ -1,6 +1,4 @@
 
-
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,21 +9,12 @@
     <title>Document</title>
 </head>
 <body>
-<form action="/test41/mainpage.php" method="post">
-    Login: <input type="text" name="username">
-    Pass: <input type="password" name="password"><br>
-    <button type="submit" name="send" value="send">Добавить</button>
-    <br>
-    <?php
-    include __DIR__ . "/extraFunction.php";
-    var_dump($_POST);
-    if ($_POST['register'] == 'register') {
-        $_POST['username'] = 'username';
-        $_POST['password'] = 'password';
-    }
+<form action="/test41/mainpage.php" method="post" enctype="multipart/form-data">
 
-    ?>
 
+    <b><div class = "center"><input type="file" name="picture" ><button type="submit" value="pic">Загрузить</button>
+
+            <br></div>
 </form>
 </body>
 </html>
