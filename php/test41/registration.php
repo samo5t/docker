@@ -13,14 +13,36 @@
             display: flex;
             justify-content: center;
         }
+        .button {
+            background-color: #e7e7e7;
+            color: black;
+            border: 2px solid #4CAF50;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 8px;
+        }
+        .label {
+            background-color: white;
+            color: black;
+            border: 2px solid lightblue;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+        }
     </style>
 </head>
 </head>
 <body>
-<form action="/test41/mainpage.php" method="post">
-    <div class="center"> Login: <input type="text" name="register_username">
-    Pass: <input type="password" name="register_password">
+<form action="/test41/mainpage.php?registration=r" method="post">
+    <div class="center"> Login: <input class="label" type="text" name="register_username">
+    Pass: <input class="label" type="password" name="register_password">
 <br>
-    <button type="submit" name="registrationButton" value="send">Registration</button>
+        <button class = 'button' type="submit" name="registrationButton" value="send">Registration</button>
 </body>
 </html>
