@@ -26,7 +26,7 @@
     </style>
 </head>
 <body>
-<form action="/test41/mainpage.php?send=s" method="post" enctype="multipart/form-data">
+<form action="/test41/mainpage.php?idAction=send" method="post" enctype="multipart/form-data">
 
 
     <b><span class="center"><div class = "button"><input type="file" name="picture" ><button class='button' type="submit" value="pic">Загрузить</button>

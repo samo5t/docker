@@ -39,7 +39,7 @@
 </head>
 </head>
 <body>
-<form action="/test41/mainpage.php?registration=r" method="post">
+<form action="/test41/mainpage.php?idAction=registration" method="post">
     <div class="center"> Login: <input class="label" type="text" name="register_username">
     Pass: <input class="label" type="password" name="register_password">
 <br>

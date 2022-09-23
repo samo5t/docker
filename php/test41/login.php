@@ -38,7 +38,7 @@
     </style>
 </head>
 <body>
-<form action="/test41/mainpage.php?login=l" method="post">
+<form action="/test41/mainpage.php?idAction=login" method="post">
     <div class="center">Login: <input class="label" type="text" name="username">
     Pass: <input class='label' type="password" name="password"><br>
 

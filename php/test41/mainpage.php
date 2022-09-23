@@ -28,16 +28,7 @@ session_start();
             border-radius: 8px;
         }
 
-        .label {
-            background-color: white;
-            color: black;
-            border: 2px solid lightblue;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            border-radius: 4px;
+
     </style>
 </head>
 <body>
@@ -47,30 +38,32 @@ session_start();
 
     include __DIR__ . "/extraFunction.php";
     $imgpath = __DIR__ . '/upload/';
-
+    $usersWithPasswordsDB = makeKeyValues($path);
     echo '<b><div class = "center"><button class="button" type="submit" name="register" value="register">Регистрация</button>
     <button class="button" type="submit" name="login" value="login">Войти или сменить аккаунт</button>
     <br></div>';
 
-    function registrationAction(string $path): void
+    function registrationAction(string $path, array $usersWithPasswordsDB): void
     {
         if (isset($_POST['register_username']) && isset($_POST['register_password']) &&
-            makeNewUser($_POST['register_username'], $_POST['register_password'], $path)) {
+            makeNewUser($_POST['register_username'], $_POST['register_password'], $path, $usersWithPasswordsDB)) {
             unset($_SESSION);
             $_SESSION['username'] = $_POST['register_username'];
             outputForMembers($_SESSION['username']);
         } else {
             echo "Такой пользователь уже зарегистрирован";
+
         }
     }
 
-    function loginAction(string $path): void
+    function loginAction(array $usersWithPasswordsDB): void
     {
-        if ((isset($_POST['username']) && isset($_POST['password'])) && getCheckDB($_POST['username'], $_POST['password'], $path)) {
+        if ((isset($_POST['username']) && isset($_POST['password'])) && getCheckDB($_POST['username'], $_POST['password'], $usersWithPasswordsDB)) {
             $_SESSION['username'] = $_POST['username'];
             outputForMembers($_SESSION['username']);
         } else {
             echo 'Неверный логин или пароль';
+            unset($_SESSION['username']);
         }
     }
 
@@ -98,15 +91,15 @@ session_start();
     }
 
     switch (true) {
-        case (isset($_GET['registration'])) :
-            registrationAction($path);
+        case (isset($_GET['idAction']) && ($_GET['idAction'] === 'registration')) :
+            registrationAction($path, $usersWithPasswordsDB);
             mainpageAction($imgpath);
             break;
-        case (isset($_GET['login'])):
-            loginAction($path);
+        case (isset($_GET['idAction']) && ($_GET['idAction'] === 'login')):
+            loginAction($usersWithPasswordsDB);
             mainpageAction($imgpath);
             break;
-        case (isset($_GET['send'])):
+        case (isset($_GET['idAction']) && ($_GET['idAction'] === 'send')):
             downloadAction();
             mainpageAction($imgpath);
             break;

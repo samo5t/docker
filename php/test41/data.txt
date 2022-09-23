@@ -1,15 +1,2 @@
-cmct,$2y$10$/i2lYwOdkFJ1yg.7SgDPteFm.0OVqkkvVSKuOh.c.09kqetO3RRne
-qwe,$2y$10$5G9N4I6etubMXxxaTWFI4uF6mWLMlxviNDv4IUPMNC3lq2cc7KLi6
-www,$2y$10$zbigpJYF2p3UK0mo5cpasOs9a3mREMs6AMT.IlT6TTzozYlMHV4UG
-qqq,$2y$10$goKa2tOThFFfftbb/g18qe3aBPKsB2qRmtg2M0pEKyHx7m3z5g0M6
-aaa,$2y$10$IswaTVJAKG4BstrcwwqZCuND4fwk9afqoI52LGYH7UEWN6iTq3Qfi
-zzz,$2y$10$NCiJ0EZS57yO.NVXabWtfuqV5EA2YJuuZyROXpMAL8fjsh.fKtC5S
-sss,$2y$10$aa5ITCSPbM6NVyHonJCDpeabbObLllw7qPI2k5ROO311fdUGyKXZq
-eee,$2y$10$KZlbrzJgeT5bwwOUGYPQQup2rXJwnALSEwo.X1rL0PHUCuwwOJ2C6
-fff,$2y$10$OgzcqFX.oA0qG92J1IIMEesN9iqAFzpDZNHEYad76U1I8ORWn3Lhu
-rrr,$2y$10$4Wg.HPUoGZENOTXnelqkOeTub5HE.HPz2vhrgfyRZCbA8fs/qFoqC
-qwer,$2y$10$LCRlT.KK4Wd2ePv//BruIuQLfZdejN9vGpTY7q2m5YCv.CL9jCW7u
-ваы,$2y$10$EJ8peNrH58xpb1WMsnTv/OcFNu192JSaLAkcDlOLdJLAggbSVOHmu
-opo,$2y$10$6sJlrr71CJFnyA0Fhjz.v.HA9b/02T8iDR0bpfWGZ6.9uPd5bxTEO
-zxc,$2y$10$Cj/oMqUTprZHkMWVWpo0QeDSEZgnroDLhHGXjnfDTaYd30VZfzq2S
-pop,$2y$10$Ih5TCpv5EcjRLGU6joIXSeelNmXNptrj.DP/tbysxxc3xGbA5JlG.
+cmct,$2y$10$5jC/.ycFcnM.Q2twlLoKf.NcyhYT6MbqzTAf7E/9sFfYQyQaYwzpC
+qwe,$2y$10$U/wXDXF6hwOcU6knZX51sORX8cQIF0hYtb7qq1MJl8CWy51I3njfK
