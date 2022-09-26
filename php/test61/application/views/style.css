@@ -1,0 +1,17 @@
+P.blocktext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+    font-size-adjust: none;
+    font-size-adjust: 0.7;
+    font-size-adjust: inherit;
+    font-size-adjust: initial;
+    font-size: x-large;
+}
+T.titletext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+    font-style: italic;
+    font-size: xx-large;
+}
