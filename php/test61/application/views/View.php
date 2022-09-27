@@ -4,7 +4,7 @@ class View
 {
     private array $data;
 
-    public function assign($name, $value): void
+    public function assign(string $name,Page $value): void
     {
         $this->data[$name] = $value;
 
@@ -16,5 +16,15 @@ class View
         $view = $this;
         extract($this->data);
         include $path;
+    }
+
+
+    public function render(string $template)
+    {
+        ob_start();
+        $this->display($template);
+        $s = ob_get_contents();
+        ob_end_clean();
+        return $s;
     }
 }

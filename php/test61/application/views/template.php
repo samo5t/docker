@@ -1,5 +1,5 @@
-<?php
-/** @var array $x*/
+<?php /** @var Page $page */
+
 ?>
 
 <!doctype html>
@@ -14,20 +14,31 @@
 </head>
 <body>
 <T class="titletext"><b>
+        <?php
+        $id = $page->getPath();
+        $linkToPost = "http://homework.local/test61/post.php?id=$id";
+        echo '<a href=' . $linkToPost . '>';
+        $s = $page->getData();
+        echo $page->getData()[0];
+        echo '</a>';
+        ?>
+
+</T>
+</b>
+<time class="date"><?php
+    echo $page->getTime();
+    ?></time>
+<div>
+    <p class="blocktext">
     <?php
 
-    echo $page->getTitle() . ' ' . $page->getTime();
-    ?>
-</T></b>
-<p class="blocktext">
-<?php
+    foreach ($s as $key => $value) {
+        if ($key <= 4 and $key != 0)
+            echo $value . '<br>';
 
-foreach ($page->getData() as $line)
-{
-    echo $line . '<br>';
-}
-
-?>
+    }
+    echo '...'
+    ?></div>
 </p>
 </body>
 </html>

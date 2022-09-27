@@ -37,3 +37,10 @@ homework.local:80 {
     }
 
 }
+
+db.test:80 {
+  log
+  encode gzip
+
+  reverse_proxy phpmyadmin:80
+}
