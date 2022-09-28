@@ -3,11 +3,11 @@
 require_once __DIR__ . '/application/views/Page.php';
 require_once __DIR__ . '/application/views/View.php';
 require_once __DIR__ . '/application/views/News.php';
-$pdo = new PDO('mysql:host=mysql_db;dbname=homework;', 'root', 'root');
-$sql = 'SELECT * FROM `test`';
-$query = $pdo->prepare($sql);
-$query->execute();
-var_dump($query->fetchAll(PDO::FETCH_ASSOC));die;
+//$pdo = new PDO('mysql:host=mysql_db;dbname=homework;', 'root', 'root');
+//$sql = 'SELECT * FROM `test`';
+//$query = $pdo->prepare($sql);
+//$query->execute();
+//var_dump($query->fetchAll(PDO::FETCH_ASSOC));die;
 $view = new View();
 $post = new News();
 $files = array_filter(

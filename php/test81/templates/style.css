@@ -1,0 +1,47 @@
+P.blocktext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+
+    font-size-adjust: none;
+    font-size-adjust: 1;
+    font-size-adjust: inherit;
+    font-size-adjust: initial;
+    font-family: system-ui;
+    font-size: 25px;
+    font-style: italic;
+
+}
+
+T.titletext {
+    margin-left: 400px;
+    margin-right: auto;
+    width: 400px;
+    font-family: system-ui;
+    font-size: xx-large;
+
+
+}
+
+time.date{
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+R.titletextpost {
+    margin-left: 40%;
+    margin-right: auto;
+    width: 400px;
+    font-family: system-ui;
+    font-size: 50px;
+}
+W.blocktextpost {
+    margin-left: 7%;
+    width: 500px;
+    font-family: system-ui;
+    font-size: 30px;
+    font-style: italic;
+
+}

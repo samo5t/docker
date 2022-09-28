@@ -1,0 +1,14 @@
+P.blocktext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+
+    font-size-adjust: none;
+    font-size-adjust: 1;
+    font-size-adjust: inherit;
+    font-size-adjust: initial;
+    font-family: system-ui;
+    font-size: 25px;
+    font-style: italic;
+
+}
