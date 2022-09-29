@@ -11,17 +11,20 @@ class DB
 
     public function execute(string $sql): bool
     {
-        $dbh=new PDO("mysql:host={$this->configData[2]};dbname={$this->configData[3]}", $this->configData[0], $this->configData[1]);
+        $dbh = new PDO("mysql:host={$this->configData[2]};dbname={$this->configData[3]}", $this->configData[0], $this->configData[1]);
         $sth = $dbh->prepare($sql);
         return $sth->execute();
     }
 
     public function query(string $sql, array $data)
     {
-        $dbh=new PDO("mysql:host={$this->configData[2]};dbname={$this->configData[3]}", $this->configData[0], $this->configData[1]);
+        $dbh = new PDO("mysql:host={$this->configData[2]};dbname={$this->configData[3]}", $this->configData[0], $this->configData[1]);
         $sth = $dbh->prepare($sql);
-        $sth->execute([':id'=>$data['id']]);
-        $ret = $sth->fetchAll(PDO::FETCH_ASSOC);
-        return $ret;
+        if ($data) {
+            $sth->execute([':id'=>$data['id']]);
+        } else {
+            $sth->execute();
+        }
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 }

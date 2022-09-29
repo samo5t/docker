@@ -9,6 +9,10 @@ class View
         $this->data[$name] = $value;
     }
 
+    public function head(string $template): void
+    {
+        include  __DIR__ . "/$template.php";
+    }
     public function display(string $template): void
     {
         $path = __DIR__ . "/$template.php";

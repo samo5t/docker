@@ -16,7 +16,7 @@
 <T class="titletext"><b>
         <?php
         $id = $page->getPath();
-        $linkToPost = "http://homework.local/test61/post.php?id=$id";
+        $linkToPost = "http://homework.local/test61/postnews.php?id=$id";
         echo '<a href=' . $linkToPost . '>';
         $s = $page->getData();
         echo $page->getData()[0];
