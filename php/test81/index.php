@@ -1,4 +1,8 @@
 <?php
+
+
+use app\views\Post;
+
 include 'config.php';
 require_once __DIR__ . '/classes/DB.php';
 require_once __DIR__ . '/classes/View.php';

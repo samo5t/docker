@@ -1,5 +1,7 @@
 <?php
 
+use app\views\Post;
+
 class View
 {
     private array $data;
