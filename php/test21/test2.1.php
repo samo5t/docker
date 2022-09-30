@@ -5,9 +5,9 @@
 </head>
 <body>
 <form action="/test21/test2.1.php" method="get">
-    первое число: <input type="text" name="firstNumber">
+    первое число: <input type="text" pattern="^[ 0-9]+$" name="firstNumber">
     <br>
-    второе число: <input type="text " name="secondNumber">
+    второе число: <input type="text " pattern="^[ 0-9]+$"  name="secondNumber">
     <br>
 
     <input type="radio" id="plus"
@@ -28,7 +28,6 @@
     <button type="submit" name="result" value="result">" = "</button>
     <br>
     <?php
-    $pattern = '#^[0-9.]+$#';
 
     function selectOperation(string $operation, int|float $numberOne, int|float $numberTwo): int|float
     {
@@ -59,14 +58,9 @@
 if (isset($_GET["secondNumber"]) && isset($_GET["firstNumber"]) && isset($_GET['operation'])){
     $firstNumber = $_GET["firstNumber"];
     $secondNumber = $_GET["secondNumber"];
-
-
-    if (!preg_match($pattern, $firstNumber) && !preg_match($pattern, $secondNumber)) {
-        echo "Введите числа";
-    } else {
-        echo "результат ";
+echo "результат ";
         echo selectOperation($_GET["operation"], $firstNumber, $secondNumber);
-    };
+
 }else
 {
     echo 'неверный запрос';
