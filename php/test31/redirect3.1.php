@@ -6,11 +6,18 @@ header("Location: http://homework.local/test31/test3.1.php ")
 <body>
 <form action="/test31/test3.1.php">
     <?php
+    /**
+     * @param string $dir
+     * @return array|false
+     * Считывает строки из файлы и помещает в архив
+     */
     function bookOfGuests(string $dir)
     {
         return file($dir);
     }
-    include __DIR__ . "../include/includeFunction.php";
+    if (!file_exists(__DIR__ . "../include/includeFunction.php")){
+    include __DIR__ . "../include/includeFunction.php";}
+
     $path = __DIR__ . "/data.txt";
     $entry = "{$_POST["newNameInList"]} {$_POST["arrivalTime"]} \n";
     $pattern = '/^[а-яё]+$/iu';
