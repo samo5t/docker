@@ -32,7 +32,7 @@ header("Location: http://homework.local/test31/test3.1.php ")
     }
     $pattern = '/^[а-яё]+$/iu';
     $checkName = $_POST["newNameInList"];
-var_dump($entry);
+
     try {
         if (preg_match($pattern, $checkName)) {
             file_put_contents($path, $entry, FILE_APPEND | LOCK_EX);
@@ -44,7 +44,7 @@ var_dump($entry);
             echo "Неверное значение";
         }
     } catch (Exception $e) {
-         $e->getMessage();
+        $e->getMessage();
     }
 
     var_dump($_POST);

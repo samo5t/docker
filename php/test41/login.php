@@ -39,8 +39,8 @@
 </head>
 <body>
 <form action="/test41/mainpage.php?idAction=login" method="post">
-    <div class="center">Login: <input class="label" type="text" name="username">
-    Pass: <input class='label' type="password" name="password"><br>
+    <div class="center">Login: <input class="label" required maxlength="30" pattern="^[a-z]+$" type="text" name="username">
+    Pass: <input class='label' type="password" required maxlength="30" name="password"><br>
 
     <button class="button" type="submit" name="send" value="send">Добавить</button>
     <br>

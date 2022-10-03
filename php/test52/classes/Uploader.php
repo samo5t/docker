@@ -14,6 +14,10 @@ class Uploader
 
     }
 
+    /**
+     * @return bool
+     * Проверика загружен ли файл
+     */
     function isUploaded(): bool
     {
         if (empty($_FILES)) {
@@ -26,6 +30,12 @@ class Uploader
         }
         return true;
     }
+
+    /**
+     * @param $string
+     * @return string
+     * Получение расширения файла
+     */
     function getExtension($string): string
     {
         $ext = "";
@@ -39,6 +49,11 @@ class Uploader
 
     }
 
+    /**
+     * @param string $fileDirectory
+     * @return bool
+     * Создание нового имени файла и загрузка на сервер
+     */
     function upload(string $fileDirectory): bool
     {
 

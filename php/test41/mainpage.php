@@ -42,7 +42,12 @@ session_start();
     echo '<b><div class = "center"><button class="button" type="submit" name="register" value="register">Регистрация</button>
     <button class="button" type="submit" name="login" value="login">Войти или сменить аккаунт</button>
     <br></div>';
-
+    /**
+     * @param string $path
+     * @param array $usersWithPasswordsDB
+     * @return void
+     * регистрация нового пользователя, запись данных, сохранение в сессии
+     */
     function registrationAction(string $path, array $usersWithPasswordsDB): void
     {
         if (isset($_POST['register_username']) && isset($_POST['register_password']) &&
@@ -52,10 +57,14 @@ session_start();
             outputForMembers($_SESSION['username']);
         } else {
             echo "Такой пользователь уже зарегистрирован";
-
         }
     }
 
+    /**
+     * @param array $usersWithPasswordsDB
+     * @return void
+     * Вход пользователя, проверка данных в базе, сохранение в сессии
+     */
     function loginAction(array $usersWithPasswordsDB): void
     {
         if ((isset($_POST['username']) && isset($_POST['password'])) && getCheckDB($_POST['username'], $_POST['password'], $usersWithPasswordsDB)) {
@@ -67,13 +76,16 @@ session_start();
         }
     }
 
+    /**
+     * @return void
+     * Загрузка и перемещение в хранилище изображения от авторизированного пользователя
+     */
     function downloadAction(): void
     {
 
         $fileTmpName = $_FILES['picture']['tmp_name'];
         $name = md5_file($fileTmpName);
         $nameWithFormat = $name . get_extension($_FILES['picture']['type']);
-//            var_dump($nameWithFormat);
         if (!move_uploaded_file($fileTmpName, __DIR__ . '/upload/' . $nameWithFormat)) {
             echo('При записи изображения на диск произошла ошибка.');
         } else {
@@ -81,6 +93,11 @@ session_start();
         }
     }
 
+    /**
+     * @param string $imgpath
+     * @return void
+     * Вывод всех загруженных изображений из хранилища
+     */
     function mainpageAction(string $imgpath): void
     {
         $files = scandir($imgpath);
@@ -91,11 +108,11 @@ session_start();
     }
 
     switch (true) {
-        case (isset($_GET['idAction']) && ($_GET['idAction'] === 'registration')) :
+        case (isset($_GET['idAction']) && ('registration' === $_GET['idAction'])) :
             registrationAction($path, $usersWithPasswordsDB);
             mainpageAction($imgpath);
             break;
-        case (isset($_GET['idAction']) && ($_GET['idAction'] === 'login')):
+        case (isset($_GET['idAction']) && 'login' === ($_GET['idAction'])):
             loginAction($usersWithPasswordsDB);
             mainpageAction($imgpath);
             break;

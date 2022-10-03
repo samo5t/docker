@@ -1,11 +1,15 @@
 <?php
-
+/**
+ * @param string $text
+ * @return bool
+ * проверки на символы строки
+ */
 function checkForRuLettersOnly(string $text):bool{
     $patternForRuLettersOnly = "/^[а-яё]+$/iu";
     return preg_match($patternForRuLettersOnly, $text);
 }
 function checkForEnLettersOnly(string $text):bool{
-    $patternForEnLettersOnly = "/^[a-z]+$/iu";
+    $patternForEnLettersOnly = "/^[a-z]{30}+$/iu";
     return preg_match($patternForEnLettersOnly, $text);
 }
 function checkForInteger(string $text):bool{

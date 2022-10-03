@@ -40,8 +40,8 @@
 </head>
 <body>
 <form action="/test41/mainpage.php?idAction=registration" method="post">
-    <div class="center"> Login: <input class="label" type="text" name="register_username">
-    Pass: <input class="label" type="password" name="register_password">
+    <div class="center"> Login: <input class="label" required maxlength="30" pattern="^[a-z]+$" type="text" name="register_username">
+    Pass: <input class="label" type="password" required maxlength="30" name="register_password">
 <br>
         <button class = 'button' type="submit" name="registrationButton" value="send">Registration</button>
 </body>

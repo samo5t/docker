@@ -6,9 +6,6 @@ if (isset($_POST['register'])) {
 if (isset($_POST['login'])) {
     $x = "Location: http://homework.local/test41/login.php";
 }
-if (isset($_POST['incorrectInput'])) {
-    $x = "Location: http://homework.local/test41/incorrect.php";
-}
 if (isset($_POST['download'])) {
     $x = "Location: http://homework.local/test41/send.php";
 }

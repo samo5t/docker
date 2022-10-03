@@ -12,11 +12,11 @@
 <input type="file" name="picture">
     <button type="submit">Отправить</button>
 <?php
-$path = "/bmw";
-var_dump($path);
-$img = "<img src='{$path}'  width='800' height='610' >";
-echo $img
-
+$path = "test.png";
+if (file_exists($path)) {
+    $img = "<img src='{$path}'  width='800' height='610' >";
+    echo $img;
+}
 
 ?>
 </form>

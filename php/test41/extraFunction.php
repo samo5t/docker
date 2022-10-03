@@ -5,21 +5,38 @@
  * @param $dir
  * @return array
  */
+if (file_exists(__DIR__ . "/../include/includeFunction.php")) {
+    include __DIR__ . "/../include/includeFunction.php";
+}
+else{
+    echo 'файл не найден';
+}
 
-include __DIR__ . "/../include/includeFunction.php";
-
-
+/**
+ * @param string $dir
+ * @return array
+ * Создание массива логин-пароль из файла
+ */
 function makeKeyValues(string $dir): array
 {
     $file = explode(PHP_EOL, file_get_contents($dir));
     $usersWithPasswords = [];
     foreach ($file as $line) {
-            $usernameAndPassword = explode(",", $line);
-            $usersWithPasswords[] = ['username' => $usernameAndPassword[0], 'password' => $usernameAndPassword[1]];
+        $usernameAndPassword = explode(",", $line);
+        $usersWithPasswords[] = ['username' => $usernameAndPassword[0], 'password' => $usernameAndPassword[1]];
     }
     return $usersWithPasswords;
 }
 
+/**
+ * @param string $sendUsername
+ * @param string $sendPassword
+ * @param string $type
+ * @param array $usersWithPasswords
+ * @return bool
+ * Если параметр $type === 'login', проверяет в базе логин и хэш пароля.
+ * Если параметр $type === 'register', проверяет не занят ли пароль.
+ */
 function authenticate(string $sendUsername, string $sendPassword, string $type, array $usersWithPasswords): bool
 {
     if ('login' === $type) {
@@ -38,7 +55,13 @@ function authenticate(string $sendUsername, string $sendPassword, string $type, 
     return false;
 }
 
-
+/**
+ * @param string $username
+ * @param string $password
+ * @param array $usersWithPasswords
+ * @return bool
+ * Получает логин и пароль, если проверка пройдена, то сохраняет их в сессии.
+ */
 function getCheckDB(string $username, string $password, array $usersWithPasswords): bool
 {
 
@@ -50,6 +73,15 @@ function getCheckDB(string $username, string $password, array $usersWithPassword
     return false;
 }
 
+/**
+ * @param string $username
+ * @param string $password
+ * @param string $path
+ * @param array $usersWithPasswords
+ * @return bool
+ * Записывает данные нового пользователя в файл, в формате login,password, пароль хэшируется,
+ * логин проверяется на соответсвие нужному формату текста
+ */
 function makeNewUser(string $username, string $password, string $path, array $usersWithPasswords): bool
 {
     $entry = "$username" . ',' . password_hash($password, PASSWORD_DEFAULT) . "\n";
@@ -65,7 +97,12 @@ function makeNewUser(string $username, string $password, string $path, array $us
     return false;
 }
 
-function get_extension($imagetype)
+/**
+ * @param $imagetype
+ * @return false|string
+ * Получает полный тип файла и переводит его в сокращенный вид.
+ */
+function get_extension(string $imagetype)
 {
     if (empty($imagetype)) return false;
 
@@ -95,9 +132,15 @@ function get_extension($imagetype)
     };
 }
 
+/**
+ * @param $name
+ * @return void
+ * Получает имя пользователя и использует его для вывода на страницу.
+ */
 function outputForMembers($name): void
 {
     echo "<div class = 'center'><p> $name, вы вошли<br>
     <button class='button' type='submit' name='download' value='pic'>Загрузить</button>
             <br></div>";
 }
+

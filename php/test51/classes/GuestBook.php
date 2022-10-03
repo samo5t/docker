@@ -9,6 +9,11 @@ class GuestBook extends TextFile
         parent::__construct($path);
     }
 
+    /**
+     * @param string $text
+     * @return void
+     * добавление строки в последний элемент массива
+     */
     public function append(string $text)
     {
        $this->textFileArray[] = $text;
