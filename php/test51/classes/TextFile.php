@@ -11,8 +11,8 @@ class TextFile
     }
 
     /**
-     * @return array
      * Получение массива
+     * @return array
      */
     public function getData(): array
     {
@@ -20,8 +20,8 @@ class TextFile
     }
 
     /**
-     * @return void
      * сохранение в файл
+     * @return void
      */
     public function saveData(): void
     {

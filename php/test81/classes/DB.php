@@ -10,9 +10,9 @@ class DB
     }
 
     /**
+     * Проверка sql запроса
      * @param string $sql
      * @return bool
-     * Проверка sql запроса
      */
     public function execute(string $sql): bool
     {
@@ -22,10 +22,10 @@ class DB
     }
 
     /**
+     * Выполнение запроса с подстановкой переменных из массива, если он не пустой
      * @param string $sql
      * @param array $data
      * @return array|false
-     * Выполнение запроса с подстановкой переменных из массива, если он не пустой
      */
     public function query(string $sql, array $data)
     {

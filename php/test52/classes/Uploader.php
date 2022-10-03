@@ -32,9 +32,9 @@ class Uploader
     }
 
     /**
+     * Получение расширения файла
      * @param $string
      * @return string
-     * Получение расширения файла
      */
     function getExtension($string): string
     {
@@ -50,9 +50,9 @@ class Uploader
     }
 
     /**
+     * Создание нового имени файла и загрузка на сервер
      * @param string $fileDirectory
      * @return bool
-     * Создание нового имени файла и загрузка на сервер
      */
     function upload(string $fileDirectory): bool
     {

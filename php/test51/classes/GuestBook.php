@@ -10,9 +10,9 @@ class GuestBook extends TextFile
     }
 
     /**
+     * добавление строки в последний элемент массива
      * @param string $text
      * @return void
-     * добавление строки в последний элемент массива
      */
     public function append(string $text)
     {

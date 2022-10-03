@@ -13,9 +13,9 @@ else{
 }
 
 /**
+ * Создание массива логин-пароль из файла
  * @param string $dir
  * @return array
- * Создание массива логин-пароль из файла
  */
 function makeKeyValues(string $dir): array
 {
@@ -29,20 +29,22 @@ function makeKeyValues(string $dir): array
 }
 
 /**
+ * Если параметр $type === 'login', проверяет в базе логин и хэш пароля.
+ * Если параметр $type === 'register', проверяет не занят ли пароль.
  * @param string $sendUsername
  * @param string $sendPassword
  * @param string $type
  * @param array $usersWithPasswords
  * @return bool
- * Если параметр $type === 'login', проверяет в базе логин и хэш пароля.
- * Если параметр $type === 'register', проверяет не занят ли пароль.
  */
 function authenticate(string $sendUsername, string $sendPassword, string $type, array $usersWithPasswords): bool
 {
     if ('login' === $type) {
         foreach ($usersWithPasswords as $line) {
-            if ($sendUsername == $line['username'] && password_verify($sendPassword, $line['password']))
+            if ($sendUsername == $line['username'] && password_verify($sendPassword, $line['password'])) {
+
                 return true;
+            }
         }
 
     } elseif ('register' === $type) {
@@ -52,43 +54,42 @@ function authenticate(string $sendUsername, string $sendPassword, string $type, 
         }
 
     }
+
     return false;
 }
 
 /**
+ * Получает логин и пароль, если проверка пройдена, то сохраняет их в сессии.
  * @param string $username
  * @param string $password
  * @param array $usersWithPasswords
  * @return bool
- * Получает логин и пароль, если проверка пройдена, то сохраняет их в сессии.
  */
 function getCheckDB(string $username, string $password, array $usersWithPasswords): bool
 {
-
     if (authenticate($username, $password, 'login', $usersWithPasswords)) {
         $_SESSION['username'] = $username;
         $_SESSION['password'] = $password;
         return true;
     }
+
     return false;
 }
 
 /**
+ * Записывает данные нового пользователя в файл, в формате login,password, пароль хэшируется,
+ * логин проверяется на соответсвие нужному формату текста
  * @param string $username
  * @param string $password
  * @param string $path
  * @param array $usersWithPasswords
  * @return bool
- * Записывает данные нового пользователя в файл, в формате login,password, пароль хэшируется,
- * логин проверяется на соответсвие нужному формату текста
  */
 function makeNewUser(string $username, string $password, string $path, array $usersWithPasswords): bool
 {
     $entry = "$username" . ',' . password_hash($password, PASSWORD_DEFAULT) . "\n";
-    $checkName = $username;
-
-    if (checkForEnLettersOnly($checkName, 4) && !(authenticate($username,
-            password_hash($password, PASSWORD_DEFAULT), 'register', $usersWithPasswords))) {
+    if (checkForEnLettersOnly($username) &&
+        !(authenticate($username, password_hash($password, PASSWORD_DEFAULT), 'register', $usersWithPasswords))) {
         file_put_contents($path, $entry, FILE_APPEND | LOCK_EX);
 
         return true;
@@ -98,9 +99,9 @@ function makeNewUser(string $username, string $password, string $path, array $us
 }
 
 /**
- * @param $imagetype
- * @return false|string
  * Получает полный тип файла и переводит его в сокращенный вид.
+ * @param string $imagetype
+ * @return false|string
  */
 function get_extension(string $imagetype)
 {
@@ -131,11 +132,10 @@ function get_extension(string $imagetype)
         default => false,
     };
 }
-
 /**
+ * Получает имя пользователя и использует его для вывода на страницу.
  * @param $name
  * @return void
- * Получает имя пользователя и использует его для вывода на страницу.
  */
 function outputForMembers($name): void
 {
@@ -143,4 +143,5 @@ function outputForMembers($name): void
     <button class='button' type='submit' name='download' value='pic'>Загрузить</button>
             <br></div>";
 }
+
 

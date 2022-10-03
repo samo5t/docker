@@ -43,10 +43,10 @@ session_start();
     <button class="button" type="submit" name="login" value="login">Войти или сменить аккаунт</button>
     <br></div>';
     /**
+     * регистрация нового пользователя, запись данных, сохранение в сессии
      * @param string $path
      * @param array $usersWithPasswordsDB
      * @return void
-     * регистрация нового пользователя, запись данных, сохранение в сессии
      */
     function registrationAction(string $path, array $usersWithPasswordsDB): void
     {
@@ -61,9 +61,9 @@ session_start();
     }
 
     /**
+     * Вход пользователя, проверка данных в базе, сохранение в сессии
      * @param array $usersWithPasswordsDB
      * @return void
-     * Вход пользователя, проверка данных в базе, сохранение в сессии
      */
     function loginAction(array $usersWithPasswordsDB): void
     {
@@ -77,8 +77,8 @@ session_start();
     }
 
     /**
-     * @return void
      * Загрузка и перемещение в хранилище изображения от авторизированного пользователя
+     * @return void
      */
     function downloadAction(): void
     {
@@ -94,9 +94,9 @@ session_start();
     }
 
     /**
+     * Вывод всех загруженных изображений из хранилища
      * @param string $imgpath
      * @return void
-     * Вывод всех загруженных изображений из хранилища
      */
     function mainpageAction(string $imgpath): void
     {

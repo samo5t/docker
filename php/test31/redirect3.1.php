@@ -7,9 +7,9 @@ header("Location: http://homework.local/test31/test3.1.php ")
 <form action="/test31/test3.1.php">
     <?php
     /**
+     * Считывает строки из файлы и помещает в массив, иначе исключение
      * @param string $dir
      * @return array|false
-     * Считывает строки из файлы и помещает в массив, иначе исключение
      */
     function bookOfGuests($dir): bool|array
     {

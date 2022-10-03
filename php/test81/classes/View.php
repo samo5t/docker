@@ -7,10 +7,10 @@ class View
     private array $data;
 
     /**
+     * сохраняет данные с заданным именем
      * @param string $name
      * @param Post $value
      * @return void
-     * сохраняет данные с заданным именем
      */
     public function assign(string $name, Post $value): void
     {
@@ -18,9 +18,9 @@ class View
     }
 
     /**
+     * Печатает head
      * @param string $template
      * @return void
-     * Печатает head
      */
     public function head(string $template): void
     {
@@ -30,9 +30,9 @@ class View
     }
 
     /**
+     * Если есть файл, выводит содержимое в браузер
      * @param string $template
      * @return void
-     * Если есть файл, выводит содержимое в браузер
      */
     public function display(string $template): void
     {if (file_exists(__DIR__ . "/$template.php")){
@@ -43,9 +43,9 @@ class View
     }
 
     /**
+     * Возвращает содержимое файла
      * @param string $template
      * @return false|string
-     * Возвращает содержимое файла
      */
     public function render(string $template)
     {

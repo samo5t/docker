@@ -8,8 +8,8 @@ class Post
     }
 
     /**
-     * @return array
      * возвращает данные в массиве
+     * @return array
      */
     public function getData(): array
     {
