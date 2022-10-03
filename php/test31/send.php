@@ -9,9 +9,8 @@
 </head>
 <body>
 <form action="/test31/redirect3.1.php" method="post">
-    Имя: <input type="text" required name="newNameInList">
+    Имя: <input type="text" required pattern="^[а-яё]+$" name="newNameInList">
 
-    Время: <input type="time" required name="arrivalTime"><br>
     <button type="submit" name="send" value="send">Добавить</button>
     <br>
 

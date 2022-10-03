@@ -15,14 +15,25 @@
 
     $path = __DIR__ . "/data.txt";
 
-    function bookOfGuests(string $dir)
+
+    function bookOfGuests($dir): bool|array
+    {if (!file_exists($dir)){
+        throw new Exception('ошибка чтения');}
+    else
     {
         return file($dir);
-    }
-    foreach (bookOfGuests($path) as $value) {
-        echo "{$value} <br>";
+        }
     }
 
+    try{
+        foreach (bookOfGuests($path) as $value) {
+            echo "{$value} <br>";
+        }
+    }
+    catch (Exception $e){
+        echo $e->getMessage();
+
+    }
     ?>
     <button type="submit" name="send" value="send">Добавить</button>
     <br>

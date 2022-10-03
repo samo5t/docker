@@ -9,29 +9,44 @@ header("Location: http://homework.local/test31/test3.1.php ")
     /**
      * @param string $dir
      * @return array|false
-     * Считывает строки из файлы и помещает в архив
+     * Считывает строки из файлы и помещает в массив, иначе исключение
      */
-    function bookOfGuests(string $dir)
+    function bookOfGuests($dir): bool|array
     {
-        return file($dir);
+        if (!file_exists($dir)) {
+            throw new Exception('ошибка чтения');
+        } else {
+            return file($dir);
+        }
     }
-    if (!file_exists(__DIR__ . "../include/includeFunction.php")){
-    include __DIR__ . "../include/includeFunction.php";}
+
+
+    if (!file_exists(__DIR__ . "/../include/includeFunction.php")) {
+        include __DIR__ . "/../include/includeFunction.php";
+    }
 
     $path = __DIR__ . "/data.txt";
-    $entry = "{$_POST["newNameInList"]} {$_POST["arrivalTime"]} \n";
+    $date = new DateTime();
+    if (isset($_POST['newNameInList'])) {
+        $entry = "{$_POST["newNameInList"]} {$date->format('Y-m-d H:i:s')} \n";
+    }
     $pattern = '/^[а-яё]+$/iu';
     $checkName = $_POST["newNameInList"];
-
-    if ($checkName !== null && preg_match($pattern, $checkName)) {
-        file_put_contents($path, $entry, FILE_APPEND | LOCK_EX);
-        $sprav = bookOfGuests($path);
-        foreach ($sprav as $value) {
-            echo "{$value} <br>";
+var_dump($entry);
+    try {
+        if (preg_match($pattern, $checkName)) {
+            file_put_contents($path, $entry, FILE_APPEND | LOCK_EX);
+            $sprav = bookOfGuests($path);
+            foreach ($sprav as $value) {
+                echo "{$value} <br>";
+            }
+        } else {
+            echo "Неверное значение";
         }
-    } else {
-        echo "Неверное значение";
+    } catch (Exception $e) {
+         $e->getMessage();
     }
+
     var_dump($_POST);
     ?>
 </form>
