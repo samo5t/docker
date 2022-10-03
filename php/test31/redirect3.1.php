@@ -24,8 +24,9 @@ header("Location: http://homework.local/test31/test3.1.php ")
     if (!file_exists(__DIR__ . "/../include/includeFunction.php")) {
         include __DIR__ . "/../include/includeFunction.php";
     }
-
-    $path = __DIR__ . "/data.txt";
+    if (file_exists(__DIR__ . "/data.txt")) {
+        $path = __DIR__ . "/data.txt";
+    }
     $date = new DateTime();
     if (isset($_POST['newNameInList'])) {
         $entry = "{$_POST["newNameInList"]} {$date->format('Y-m-d H:i:s')} \n";

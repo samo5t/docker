@@ -5,16 +5,12 @@
 
 <T class="titletext"><b>
         <?php
-        //var_dump($this->data);
         $id = $post->getData()['id'];
         $linkToPost = "http://homework.local/test81/postnews.php?id=$id";
         echo '<a href=' . $linkToPost . '>';
         echo $post->getData()['title'];
         echo '</a>';
-        //        $s = $page->getData();
-
-
-        //        ?>
+        ?>
 
 </T>
 </b>

@@ -19,8 +19,9 @@ if (isset($_FILES["picture"])) {
         $img = "<img src='{$path}'  width='800' height='610' >";
         echo $path;
         echo $img;
-    }}
-    else { echo 'ошибка файла';
+    }
+} else {
+    echo 'ошибка файла';
 
 }
 

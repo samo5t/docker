@@ -1,4 +1,7 @@
 <?php
+/**
+ * Параметры подключения к БД
+ */
 return [
 $username = "root",
 $password = "root",
