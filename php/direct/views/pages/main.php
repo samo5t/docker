@@ -1,0 +1,1 @@
+<img src="https://avatars.mds.yandex.net/get-verba/1540742/2a00000180d7fa047e2e09e71e665301c310/cattouch" class="rounded mx-auto d-block" alt="...">
