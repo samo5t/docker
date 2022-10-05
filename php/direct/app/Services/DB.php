@@ -1,14 +1,12 @@
 <?php
 
-use PDO;
-
 class DB
 {
     private array $configData;
 
     public function __construct()
     {
-        $this->configData = include __DIR__ . '/../../config.php';
+        $this->configData = include __DIR__ . '/../../components/config.php';
     }
 
     public function execute(string $sql): bool
@@ -23,7 +21,12 @@ class DB
         $dbh = new PDO("mysql:host={$this->configData[2]};dbname={$this->configData[3]}", $this->configData[0], $this->configData[1]);
         $sth = $dbh->prepare($sql);
         if ($data) {
-            $sth->execute([':id' => $data['id']]);
+            if(isset($data['avatar'])) {
+                $sth->execute([':email' => $data['email'], ':password' => password_hash($data['password'],PASSWORD_DEFAULT), ':avatar' => $data['avatar']]);
+            }
+            else{
+                $sth->execute([':email' => $data['email']]);
+            }
         } else {
             $sth->execute();
         }

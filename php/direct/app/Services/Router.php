@@ -13,13 +13,44 @@ class Router
         ];
     }
 
+    public function post(string $uri, string $method, bool $formdata, bool $files=false): void
+    {
+        $auth = new Auth();
+        $this->list[] = [
+            'uri' => $uri,
+            'class' => $auth,
+            'method' => $method,
+            'post' => true,
+            'formdata' => $formdata,
+            'files' => $files
+        ];
+    }
+
     public function enable(): void
     {
 
         foreach ($this->list as $route) {
             if (isset($_GET['req']) && $route['uri'] === $_GET['req']) {
-                require_once "views/pages/{$route['uri']}.php";
+                if ($_SERVER['REQUEST_METHOD'] === 'POST' && $route['post'] === true) {
+                    $action = new  $route['class'];
+                    $method = $route['method'];
+                    $action->$method($_POST,$_FILES);
+                    die();
+                } else {
+                    require_once "views/pages/{$route['uri']}.php";
+                    die();
+                }
             }
         }
+        $this->errors(404);
+    }
+
+    public function redirect($uri)
+    {
+        header('Location' . $uri);
+    }
+    public function errors(int $error): void
+    {
+        require_once "views/pages/$error.php";
     }
 }
