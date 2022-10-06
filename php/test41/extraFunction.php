@@ -1,10 +1,5 @@
 <?php
 
-/**
- * [['username'=>'dad', 'password'=>'dfdfgdfg'],['username'=>'dad', 'password'=>'dfdfgdfg'],['username'=>'dad', 'password'=>'dfdfgdfg']]
- * @param $dir
- * @return array
- */
 if (file_exists(__DIR__ . "/../include/includeFunction.php")) {
     include __DIR__ . "/../include/includeFunction.php";
 }
@@ -37,11 +32,11 @@ function makeKeyValues(string $dir): array
  * @param array $usersWithPasswords
  * @return bool
  */
-function authenticate(string $sendUsername, string $sendPassword, string $type, array $usersWithPasswords): bool
+function authenticate(string $postUsername, string $postPassword, string $type, array $usersWithPasswords): bool
 {
     if ('login' === $type) {
         foreach ($usersWithPasswords as $line) {
-            if ($sendUsername == $line['username'] && password_verify($sendPassword, $line['password'])) {
+            if ($postUsername == $line['username'] && password_verify($postPassword, $line['password'])) {
 
                 return true;
             }
@@ -49,7 +44,7 @@ function authenticate(string $sendUsername, string $sendPassword, string $type, 
 
     } elseif ('register' === $type) {
         foreach ($usersWithPasswords as $line) {
-            if ($sendUsername == $line['username'])
+            if ($postUsername == $line['username'])
                 return true;
         }
 
@@ -103,11 +98,11 @@ function makeNewUser(string $username, string $password, string $path, array $us
  * @param string $imagetype
  * @return false|string
  */
-function get_extension(string $imagetype)
+function getExtension(string $imageType): bool|string
 {
-    if (empty($imagetype)) return false;
+    if (empty($imageType)) return false;
 
-    return match ($imagetype) {
+    return match ($imageType) {
         'image/bmp' => '.bmp',
         'image/cis-cod' => '.cod',
         'image/gif' => '.gif',
@@ -142,6 +137,71 @@ function outputForMembers($name): void
     echo "<div class = 'center'><p> $name, вы вошли<br>
     <button class='button' type='submit' name='download' value='pic'>Загрузить</button>
             <br></div>";
+}
+
+/**
+ * регистрация нового пользователя, запись данных, сохранение в сессии
+ * @param string $path
+ * @param array $usersWithPasswordsDB
+ * @return void
+ */
+function registrationAction(string $path, array $usersWithPasswordsDB): void
+{
+    if (isset($_POST['register_username']) && isset($_POST['register_password']) &&
+        makeNewUser($_POST['register_username'], $_POST['register_password'], $path, $usersWithPasswordsDB)) {
+        unset($_SESSION);
+        $_SESSION['username'] = $_POST['register_username'];
+        outputForMembers($_SESSION['username']);
+    } else {
+        echo "Такой пользователь уже зарегистрирован";
+    }
+}
+
+/**
+ * Вход пользователя, проверка данных в базе, сохранение в сессии
+ * @param array $usersWithPasswordsDB
+ * @return void
+ */
+function loginAction(array $usersWithPasswordsDB): void
+{
+    if ((isset($_POST['username']) && isset($_POST['password'])) && getCheckDB($_POST['username'], $_POST['password'], $usersWithPasswordsDB)) {
+        $_SESSION['username'] = $_POST['username'];
+        outputForMembers($_SESSION['username']);
+    } else {
+        echo 'Неверный логин или пароль';
+        unset($_SESSION['username']);
+    }
+}
+
+/**
+ * Загрузка и перемещение в хранилище изображения от авторизированного пользователя
+ * @return void
+ */
+function downloadAction(): void
+{
+
+    $fileTmpName = $_FILES['picture']['tmp_name'];
+    $name = md5_file($fileTmpName);
+    $nameWithFormat = $name . get_extension($_FILES['picture']['type']);
+    if (!move_uploaded_file($fileTmpName, __DIR__ . '/upload/' . $nameWithFormat)) {
+        echo('При записи изображения на диск произошла ошибка.');
+    } else {
+        echo 'Изображение загружено';
+    }
+}
+
+/**
+ * Вывод всех загруженных изображений из хранилища
+ * @param string $imgpath
+ * @return void
+ */
+function mainpageAction(string $imgPath): void
+{
+    $files = scandir($imgPath);
+    $files = array_slice($files, 2);
+    foreach ($files as $file) {
+        echo "<img src='upload/{$file}'width='500' height='500 ' >";
+    }
 }
 
 

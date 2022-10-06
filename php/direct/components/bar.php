@@ -21,7 +21,7 @@
                 </li>';
                 } else {
                     echo '<li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php?req=profile">Profile';echo "<img src='{$_SESSION['avatar']}' class='rounded float-start'  width=30px alt='200'><h1 class='display-3'></a>
+                    <a class="nav-link active" aria-current="page" href="index.php?req=profile">Profile';echo "<img src='{$_SESSION['avatar']}' class='rounded float-start'  width=30px alt='...'><h1 class='display-3'></a>
                 </li>
                 <form action='index.php?req=auth_logout' method='post'>
                 <button type='submit' class='btn btn-danger'>Logout
