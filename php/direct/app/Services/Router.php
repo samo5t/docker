@@ -13,7 +13,7 @@ class Router
         ];
     }
 
-    public function post(string $uri, string $method, bool $formdata, bool $files=false): void
+    public function post(string $uri, string $method, bool $formdata, bool $files): void
     {
         $auth = new Auth();
         $this->list[] = [
@@ -45,9 +45,9 @@ class Router
         $this->errors(404);
     }
 
-    public function redirect($uri)
+    public function redirect(string $page): void
     {
-        header('Location' . $uri);
+        require_once "views/pages/{$page}.php";
     }
     public function errors(int $error): void
     {

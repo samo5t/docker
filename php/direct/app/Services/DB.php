@@ -16,7 +16,7 @@ class DB
         return $sth->execute();
     }
 
-    public function query(string $sql, array $data)
+    public function query(string $sql, array $data): bool|array
     {
         $dbh = new PDO("mysql:host={$this->configData[2]};dbname={$this->configData[3]}", $this->configData[0], $this->configData[1]);
         $sth = $dbh->prepare($sql);
