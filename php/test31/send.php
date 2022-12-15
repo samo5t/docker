@@ -8,12 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-<form action="/test31/redirect3.1.php" method="post">
+<form action="/test31/dataSave3.1.php" method="post">
     Имя: <input type="text" required pattern="^[а-яё]+$" name="newNameInList">
-
     <button type="submit" name="send" value="send">Добавить</button>
     <br>
-
 </form>
 </body>
 </html>

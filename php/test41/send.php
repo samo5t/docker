@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,6 +11,7 @@
             display: flex;
             justify-content: center;
         }
+
         .button {
             background-color: #e7e7e7;
             color: black;
@@ -27,9 +27,10 @@
 </head>
 <body>
 <form action="/test41/mainpage.php?idAction=send" method="post" enctype="multipart/form-data">
-
-
-    <b><span class="center"><div class = "button"><input type="file" name="picture" ><button class='button' type="submit" value="pic">Загрузить</button>
+    <b><span class="center">
+            <div class="button">
+                <input type="file" name="picture">
+                <button class='button' type="submit" value="pic">Загрузить</button>
 
             <br></div>
 </form>

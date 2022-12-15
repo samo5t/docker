@@ -1,3 +1,6 @@
+<?php
+include 'action.php';
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,32 +12,6 @@
 </head>
 <body>
 <form action="/test31/send.php" method="post">
-
-
-    <?php
-
-    $path = __DIR__ . "/data.txt";
-
-
-    function bookOfGuests($dir): bool|array
-    {if (!file_exists($dir)){
-        throw new Exception('ошибка чтения');}
-    else
-    {
-        return file($dir);
-        }
-    }
-
-    try{
-        foreach (bookOfGuests($path) as $value) {
-            echo "{$value} <br>";
-        }
-    }
-    catch (Exception $e){
-        echo $e->getMessage();
-
-    }
-    ?>
     <button type="submit" name="send" value="send">Добавить</button>
     <br>
 </form>

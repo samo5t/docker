@@ -14,8 +14,7 @@
 <?php
 $path = "test.png";
 if (file_exists($path)) {
-    $img = "<img src='{$path}'  width='800' height='610' >";
-    echo $img;
+    echo "<img src='{$path}'  width='800' height='610' >";
 }
 
 ?>

@@ -1,2 +1,0 @@
-<b>admin</b>
-<?php

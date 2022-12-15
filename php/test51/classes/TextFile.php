@@ -4,7 +4,7 @@
 class TextFile
 {
     protected array $textFileArray;
-
+    public const MY_CONST = 1;
     public function __construct(protected string $path)
     {
         $this->textFileArray = file($path);

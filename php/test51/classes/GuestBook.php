@@ -9,6 +9,11 @@ class GuestBook extends TextFile
         parent::__construct($path);
     }
 
+    public function getData(): array
+    {
+return array_intersect(parent::getData(),$this->textFileArray);
+
+    }
     /**
      * добавление строки в последний элемент массива
      * @param string $text
